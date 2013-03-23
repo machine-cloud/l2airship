@@ -15,7 +15,9 @@ exports.log_drain = (req, res) ->
         device_tokens: [line.push_token]
         aps:
           alert: ALERT_MSG
+          badge: 0
       ua.pushNotification '/api/push', payload, (err) ->
+        console.log "push-notification=#{line.push_token}"
         console.log(err) if err
     else
       console.log('no-recall=true')
