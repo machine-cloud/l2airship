@@ -19,7 +19,5 @@ exports.log_drain = (req, res) ->
       ua.pushNotification '/api/push', payload, (err) ->
         console.log "push-notification=#{line.push_token}"
         console.log(err) if err
-    else
-      console.log('no-recall=true')
 
   res.send('OK')
