@@ -11,13 +11,14 @@ ALERT_MSG = "Your ThermoStat has been recalled! Please contact the manufacturer"
 exports.log_drain = (req, res) ->
   req.body.map (line) ->
     if line.recall
+      push_token = process.env.PUSH_TOKEN || line.push_token
       payload =
-        device_tokens: [line.push_token]
+        device_tokens: [push_token]
         aps:
           alert: ALERT_MSG
           badge: 0
       ua.pushNotification '/api/push', payload, (err) ->
-        console.log "push-notification=#{line.push_token}"
+        console.log "push-notification=#{push_token}"
         console.log(err) if err
 
   res.send('OK')
