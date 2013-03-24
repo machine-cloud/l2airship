@@ -1,11 +1,11 @@
-# L2X
-#### (where x = TempoDB)
+# l2airship
+#### Create Apple Push notifications via Urban Airship when devices are recalled
 
-Look, ma! I'm sending logplex logs to TempoDB!
+Coffeescript HTTP LogPlex bouncer.
 
-Coffeescript HTTP LogPlex bouncer.  This one sends logs to TempoDB.
-But it parses those logs like a champ.
-You should probably steal most of that code.
+This log drain looks for log lines with `recall=true` and uses the `push_token`
+in the log line to send a push notification to the user, alerting
+them their device has been recalled.
 
 
 ## Install
@@ -18,21 +18,17 @@ You should probably steal most of that code.
 
 ## ENV
 
-    > heroku addons:add tempodb
+    > heroku addons:add urbanairship
 
 or set
 
-    TEMPODB_API_HOST
-    TEMPODB_API_KEY
-    TEMPODB_API_PORT
-    TEMPODB_API_SECRET
-    TEMPODB_API_SECURE
+    ALERT_SOUND
+    URBANAIRSHIP_DEV_APP_KEY
+    URBANAIRSHIP_DEV_MASTER_SECRET
+    URBANAIRSHIP_DEV_SECRET
 
-## `logplex`
-### at `logplex.coffee`
-  an express middleware that pulls key=value pairs from logplex
-  built from `byo`
 
-## `byo`
-### at `byo.coffee`
-  an express middleware that lets you Bring Your Own bodyParser
+## Special Behavior
+
+For demo purposes, you can set the `PUSH_TOKEN` env var and
+all notifications will go to that device.
