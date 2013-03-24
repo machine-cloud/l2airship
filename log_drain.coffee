@@ -17,6 +17,7 @@ exports.log_drain = (req, res) ->
         aps:
           alert: ALERT_MSG
           badge: 0
+          sound: (process.env.ALERT_SOUND || "default")
       ua.pushNotification '/api/push', payload, (err) ->
         console.log "push-notification=#{push_token}"
         console.log(err) if err
