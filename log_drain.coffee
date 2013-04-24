@@ -11,7 +11,7 @@ ALERT_MSG = "Your ThermoStat has been recalled! Please contact the manufacturer"
 exports.log_drain = (req, res) ->
   req.body.map (line) ->
     if line.recall
-      push_token = process.env.PUSH_TOKEN || line.push_token
+      push_token = line.push_token || process.env.PUSH_TOKEN
       payload =
         device_tokens: [push_token]
         aps:
