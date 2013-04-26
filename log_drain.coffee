@@ -2,9 +2,9 @@
 
 UrbanAirship = require 'urban-airship'
 
-ua = new UrbanAirship process.env.URBANAIRSHIP_DEV_APP_KEY,
-  process.env.URBANAIRSHIP_DEV_SECRET,
-  process.env.URBANAIRSHIP_DEV_MASTER_SECRET
+ua = new UrbanAirship process.env.URBANAIRSHIP_PROD_APP_KEY,
+  process.env.URBANAIRSHIP_PROD_SECRET,
+  process.env.URBANAIRSHIP_PROD_MASTER_SECRET
 
 ALERT_MSG = "Your ThermoStat has been recalled! Please contact the manufacturer"
 
